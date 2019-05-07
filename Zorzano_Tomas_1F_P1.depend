@@ -1,0 +1,78 @@
+# depslib dependency file v1.0
+1557179222 source:d:\zorzano_tomas_1f_p1\fecha.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"Funciones.h"
+	"fecha.h"
+
+1557188983 d:\zorzano_tomas_1f_p1\funciones.h
+
+1557179222 d:\zorzano_tomas_1f_p1\fecha.h
+
+1557188983 source:d:\zorzano_tomas_1f_p1\funciones.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"funciones.h"
+
+1557180474 source:d:\zorzano_tomas_1f_p1\libros.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"Funciones.h"
+	"autores.h"
+	"libros.h"
+
+1557189093 source:d:\zorzano_tomas_1f_p1\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"Funciones.h"
+	"fecha.h"
+	"autores.h"
+	"libros.h"
+	"socios.h"
+	"prestamos.h"
+
+1557189283 source:d:\zorzano_tomas_1f_p1\prestamos.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"Funciones.h"
+	"autores.h"
+	"fecha.h"
+	"libros.h"
+	"socios.h"
+	"prestamos.h"
+
+1557188901 source:d:\zorzano_tomas_1f_p1\socios.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"Funciones.h"
+	"fecha.h"
+	"libros.h"
+	"socios.h"
+
+1557179685 source:d:\zorzano_tomas_1f_p1\autores.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"autores.h"
+	"Funciones.h"
+
+1557179669 d:\zorzano_tomas_1f_p1\autores.h
+
+1557183899 d:\zorzano_tomas_1f_p1\libros.h
+
+1557183241 d:\zorzano_tomas_1f_p1\socios.h
+
+1557188697 d:\zorzano_tomas_1f_p1\prestamos.h
+
