@@ -19,7 +19,7 @@ int initSocios(eSocios list[], int len)
     if(list != NULL && len > 0)
     {
 
-        for(int i=0; i < len; i++)
+        for(int i=1; i < len; i++)
         {
 
             list[i].isEmpty = 1;
@@ -74,7 +74,7 @@ void viewSocios(eSocios list[], int len)
     system("cls");
 
 
-    for(int i=0; i < len; i++)
+    for(int i=1; i < len; i++)
     {
 
         if( list[i].isEmpty == 0)
@@ -117,7 +117,6 @@ int addSocio(eSocios list[], int len)
         }
         else
         {
-
 
             printf("Socio Nuevo, su codigo es : %d \n",index);
             newSocio.file = index ;
@@ -283,25 +282,24 @@ int addSocio(eSocios list[], int len)
     return ret;
 
 };
-int funcion_opciones()
+
+
+int funcion_opcionesSocios()
 {
     int opcionIngresada;
     char auxOpcion[5];
 
 
     system("cls");
-    printf("\n******* MENU DE OPCIONES ******* \n\n");
+    printf("\n******* MENU DE OPCIONES SOCIOS ******* \n\n");
     printf(" 1- ALTA \n");
     printf(" 2- MODIFICAR \n");
     printf(" 3- BAJA \n");
     printf(" 4- LISTAR SOCIOS \n");
-    printf(" 5- LISTAR LIBROS \n");
-    printf(" 6- LISTAR AUTORES \n");
-    printf(" 7- PRESTAMOS \n");
-    printf(" 8- SALIR \n");
-    while(!funcion_getStringNumeros("Ingrese una opcion del 1-8 : ",auxOpcion))
+    printf(" 5- SALIR \n");
+    while(!funcion_getStringNumeros("Ingrese una opcion del 1-5 : ",auxOpcion))
     {
-        printf("ERROR- La opcion tiene que ser solo numeros del 1 al 8\n\n");
+        printf("ERROR- La opcion tiene que ser solo numeros del 1 al 5\n\n");
 
         system("pause");
     }
@@ -311,7 +309,6 @@ int funcion_opciones()
 
     return opcionIngresada;
 };
-
 int funcion_opcionesModificacion()
 {
     int opcionIngresada;
@@ -361,9 +358,9 @@ int removeSocio(eSocios* list, int len)
 
     id=atoi(auxId);
 
-    index = findSocio(list, len, id);
+    index = findSocio(list, len,id);
 
-    while (index == 0)
+    while (index == -1)
     {
         printf("NO HAY NINGUN SOCIO CON ESE CODIGO %d\n\n", id);
         while(!funcion_getStringNumeros("Ingrese un codigo existente: ", auxId))

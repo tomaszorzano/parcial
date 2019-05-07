@@ -10,8 +10,8 @@ typedef struct
 
 
 int initPrestamos(ePrestamos list[], int len);
-void viewPrestamo(ePrestamos aPrestamos, eSocios listSoc[],int index);
-void viewPrestamos(ePrestamos list[], int len, eSocios listSoc[],int index);
+void viewPrestamo(ePrestamos aPrestamos, eSocios listSoc[],int index,eLibros listLib[],int indexL);
+void viewPrestamos(ePrestamos list[], int len, eSocios listSoc[],int index,eLibros listLib[],int indexL);
 int findEmptyPrestamos(ePrestamos list[],int len);
 int findPrestamos(ePrestamos list[],int len, int file);
 int addPrestamo(ePrestamos list[],int len,eSocios listSoc[],int lenSoc,eLibros listLibros[],int lenLib);

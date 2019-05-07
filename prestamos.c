@@ -20,7 +20,7 @@ int initPrestamos(ePrestamos list[], int len)
     if(list != NULL && len > 0)
     {
 
-        for(int i=0; i < len; i++)
+        for(int i=1; i < len; i++)
         {
 
             list[i].isEmpty = 1;
@@ -64,14 +64,16 @@ int findPrestamos(ePrestamos list[],int len, int file)
 
 };
 
-void viewPrestamo(ePrestamos aPrestamos, eSocios listSoc[],int index)
+void viewPrestamo(ePrestamos aPrestamos, eSocios listSoc[],int index, eLibros listLib[],int indexL)
 {
 
+
     viewSocio(listSoc[index]);
-    printf(" \nCodigo Libro:%d - Libro:%s -  Socio:%d-\n\nFecha de Prestamo\n\n Dia:%d-  Mes:%d-  Anio:%d \n---------------------------\n ", aPrestamos.codigoPrestamo, aPrestamos.libroPre.titulo, aPrestamos.socioPre.file,aPrestamos.fechaPre.dia,aPrestamos.fechaPre.mes,aPrestamos.fechaPre.anio);
+    viewLibro(listLib[indexL]);
+    printf(" \nCodigo Libro:%d - Legajo Socio:%d-\n\nFecha de Prestamo\n\n Dia:%d- Mes:%d- Anio:%d \n---------------------------\n ", aPrestamos.codigoPrestamo, aPrestamos.socioPre.file,aPrestamos.fechaPre.dia,aPrestamos.fechaPre.mes,aPrestamos.fechaPre.anio);
 };
 
-void viewPrestamos(ePrestamos list[], int len, eSocios listSoc[],int index)
+void viewPrestamos(ePrestamos list[], int len, eSocios listSoc[],int index,eLibros listLib[],int indexL)
 {
 
     system("cls");
@@ -82,7 +84,7 @@ void viewPrestamos(ePrestamos list[], int len, eSocios listSoc[],int index)
 
         if( list[i].isEmpty == 0)
         {
-            viewPrestamo(list[i],listSoc,index);
+            viewPrestamo(list[i],listSoc,index,listLib,indexL);
         }
     }
 
@@ -105,6 +107,17 @@ int addPrestamo(ePrestamos list[],int len,eSocios listSoc[],int lenSoc,eLibros l
     char auxMes[11];
     char auxAnio[11];
     char auxName[51];
+    char codigoLibro[5];
+    int indexLibro=0;
+
+
+    //Contadores
+    int contLibro1=0;
+    int contLibro2=0;
+    int contLibro3=0;
+    int contLibro4=0;
+    int contLibro5=0;
+
     char auxLastName[51];
     float ret;
     int fechaCorrecta=-1;
@@ -138,34 +151,65 @@ int addPrestamo(ePrestamos list[],int len,eSocios listSoc[],int lenSoc,eLibros l
             {
 
                 viewlibros(listLib,MAXLIB);
-                while(!funcion_getStringAlfaNumerico("Ingrese Libro: ",auxLibro))
+                int existeLibro=0;
+
+
+                do
                 {
-                    printf("ERROR- EL MENU TIENE QUE CONTENER SOLO LETRAS\n\n ");
-                    system("pause");
-                    system("cls");
-                   libro=1;
 
+                    existeLibro=0;
+                    while(!funcion_getStringNumeros("Ingrese codigo del libro: ",codigoLibro))
+                    {
+                        printf("ERROR- EL CODIGO TIENE QUE CONTENER SOLO NUMEROS\n\n ");
+                        system("pause");
+                        system("cls");
+                        existeLibro=0;
+                        libro=1;
+                    }
+                    indexLibro=findLibro(listLib,MAXLIB,atoi(codigoLibro));
+                    if(indexLibro == -1)
+                    {
+                        printf("No existe libro\n\n");
+                        system("pause");
+                        system("cls");
+                        existeLibro=1;
 
-                };
-                 libro=1;
+                    }
+                }while (existeLibro == 1 );
 
+                libro=1;
             }
-
-
             printf("\nLibro: %s \n",auxLibro);
 
             if(legajo==0)
             {
                 viewSocios(listSoc,lenSoc);
-                while(!funcion_getStringNumeros("Ingrese codigo del socio: ",auxLegajo))
+                int existeSocio=0;
+
+
+                do
+                {
+
+                    existeSocio=0;
+                     while(!funcion_getStringNumeros("Ingrese codigo del socio: ",auxLegajo))
                 {
                     printf("ERROR- EL CODIGO TIENE QUE CONTENER SOLO NUMEROS\n\n ");
                     system("pause");
                     system("cls");
-                    printf("\nMenu: %s \n",auxLibro);
+                    existeSocio=0;
                     legajo=1;
 
-                };
+                }
+                    indexE=findSocio(listSoc,MAXSOC,atoi(auxLegajo));
+                    if(indexE == -1)
+                    {
+                        printf("No existe socio\n\n");
+                        system("pause");
+                        system("cls");
+                        existeSocio=1;
+
+                    }
+                }while (existeSocio == 1 );
                 legajo=1;
 
             }
@@ -210,10 +254,10 @@ int addPrestamo(ePrestamos list[],int len,eSocios listSoc[],int lenSoc,eLibros l
                 strcpy(auxName,newPrestamo.socioPre.name);
                 strcpy(auxLastName,newPrestamo.socioPre.lastName);
 
-
-
-                printf("\nLibro: %s - Legajo: %s\n\nFecha de Prestamo\n\nDia %s - Mes %s - Anio %s \n\n",auxLibro,auxLegajo,auxDia,auxMes,auxAnio);
+                printf("\nLegajo: %s\n\nFecha de Prestamo\n\nDia %s - Mes %s - Anio %s \n\n",auxLegajo,auxDia,auxMes,auxAnio);
+                viewLibro(listLib[indexLibro]);
                 viewSocio(listSoc[indexE]);
+
                 system("pause");
 
             while((libro == 1) && (legajo == 1) &&(fecha == 1))
@@ -231,7 +275,7 @@ int addPrestamo(ePrestamos list[],int len,eSocios listSoc[],int lenSoc,eLibros l
                 system("cls");
                 printf("\n\n********PRESTAMO CARGADO CORRECTAMENTE*********\n\n");
 
-                viewPrestamo(list[index],listSoc,indexE);
+                viewPrestamo(list[index],listSoc,indexE,listLib,indexLibro);
                 printf("\n\n\n");
                 ret=0;
                 break;

@@ -31,9 +31,36 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="Funciones.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Funciones.h" />
+		<Unit filename="README.md" />
+		<Unit filename="Zorzano_Tomas_1F_P1.cbp" />
+		<Unit filename="Zorzano_Tomas_1F_P1.depend" />
+		<Unit filename="autores.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="autores.h" />
+		<Unit filename="fecha.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="fecha.h" />
+		<Unit filename="libros.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="libros.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="prestamos.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="prestamos.h" />
+		<Unit filename="socios.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="socios.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />

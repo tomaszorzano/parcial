@@ -19,8 +19,8 @@ int findSocio(eSocios list[],int len, int file);
 void viewSocio(eSocios aSocios);
 void viewSocios(eSocios list[], int len);
 int addSocio(eSocios list[], int len);
-int funcion_opciones();
 int removeSocio(eSocios* list, int len);
 void modifySocio(eSocios list[], int len);
 int sortSocios(eSocios list[], int len);
+int funcion_opcionesSocios();
 

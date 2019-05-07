@@ -42,3 +42,29 @@ void viewAutores(eAutores list[], int len)
 
 };
 
+int funcion_opcionesAutores()
+{
+    int opcionIngresada;
+    char auxOpcion[5];
+
+
+    system("cls");
+    printf("\n******* MENU DE OPCIONES AUTORES ******* \n\n");
+    printf(" 1- LISTAR AUTORES \n");
+    printf(" 2- SALIR \n");
+    while(!funcion_getStringNumeros("Ingrese una opcion del 1-2 : ",auxOpcion))
+    {
+        printf("ERROR- La opcion tiene que ser solo numeros del 1 al 2\n\n");
+
+        system("pause");
+    }
+
+    opcionIngresada=atoi(auxOpcion);
+
+
+    return opcionIngresada;
+};
+
+
+
+
