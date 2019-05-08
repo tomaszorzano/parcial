@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_layout_file>
+	<FileVersion major="1" minor="0" />
+	<ActiveTarget name="Debug" />
+	<File name="libros.h" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="106" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="main.c" open="1" top="1" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="9660" topLine="298" />
+		</Cursor>
+	</File>
+	<File name="libros.c" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="530" topLine="21" />
+		</Cursor>
+		<Folding>
+			<Collapse line="9" />
+			<Collapse line="26" />
+		</Folding>
+	</File>
+	<File name="socios.h" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="703" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="autores.c" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="135" topLine="6" />
+		</Cursor>
+	</File>
+	<File name="prestamos.h" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="304" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="autores.h" open="1" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="115" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="socios.c" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="17532" topLine="37" />
+		</Cursor>
+		<Folding>
+			<Collapse line="18" />
+			<Collapse line="38" />
+			<Collapse line="51" />
+			<Collapse line="68" />
+			<Collapse line="74" />
+			<Collapse line="90" />
+			<Collapse line="290" />
+			<Collapse line="316" />
+			<Collapse line="343" />
+			<Collapse line="416" />
+			<Collapse line="575" />
+			<Collapse line="616" />
+		</Folding>
+	</File>
+	<File name="prestamos.c" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="8752" topLine="62" />
+		</Cursor>
+		<Folding>
+			<Collapse line="17" />
+			<Collapse line="38" />
+			<Collapse line="51" />
+			<Collapse line="324" />
+			<Collapse line="347" />
+		</Folding>
+	</File>
+</CodeBlocks_layout_file>

@@ -53,10 +53,11 @@ int funcion_opcionesLibros()
     system("cls");
     printf("\n******* MENU DE OPCIONES LIBROS ******* \n\n");
     printf(" 1- LISTAR LIBROS \n");
-    printf(" 2- SALIR \n");
-    while(!funcion_getStringNumeros("Ingrese una opcion del 1-2 : ",auxOpcion))
+    printf(" 2- ORDENAR LIBROS POR TITULO (DESCENDENTE) \n");
+    printf(" 3- SALIR \n");
+    while(!funcion_getStringNumeros("Ingrese una opcion del 1-3 : ",auxOpcion))
     {
-        printf("ERROR- La opcion tiene que ser solo numeros del 1 al 2\n\n");
+        printf("ERROR- La opcion tiene que ser solo numeros del 1 al 3\n\n");
 
         system("pause");
     }
@@ -82,5 +83,56 @@ int findLibro(eLibros list[],int len, int file)
     return index;
 
 };
+int findLibroXCodigo(eLibros list[],int len, int file)
+{
+    int index = -1;
 
+    for(int i=0; i < len; i++)
+    {
+
+        if( list[i].id == file && list[i].isEmpty == 0)
+        {
+            index = i;
+            break;
+        }
+    }
+    return index;
+
+};
+
+int sortLibros(eLibros list[], int len)
+{
+    eLibros auxLibros;
+
+    int ret;
+
+
+    if(list != NULL && len > 0)
+    {
+
+        for(int i = 0; i < len-1; i++)
+        {
+            for(int j = i+1; j < len; j++)
+            {
+               if(strcmp(list[j].titulo, list[i].titulo) > 0 && list[j].isEmpty == 0 && list[i].isEmpty == 0)
+                {
+                    auxLibros = list[i];
+                    list[i] = list[j];
+                    list[j] = auxLibros;
+                }
+
+            }
+        }
+    }
+
+
+    else
+    {
+        ret = -1;
+    }
+
+
+    return ret;
+
+};
 

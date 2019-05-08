@@ -6,6 +6,9 @@
 #include "fecha.h"
 #include "libros.h"
 #include "socios.h"
+#include "prestamos.h"
+
+
 
 
 #define MAX 1001
@@ -296,10 +299,11 @@ int funcion_opcionesSocios()
     printf(" 2- MODIFICAR \n");
     printf(" 3- BAJA \n");
     printf(" 4- LISTAR SOCIOS \n");
-    printf(" 5- SALIR \n");
-    while(!funcion_getStringNumeros("Ingrese una opcion del 1-5 : ",auxOpcion))
+    printf(" 5- LISTAR SOCIOS (INSERCION) \n");
+    printf(" 6- SALIR \n");
+    while(!funcion_getStringNumeros("Ingrese una opcion del 1-6 : ",auxOpcion))
     {
-        printf("ERROR- La opcion tiene que ser solo numeros del 1 al 5\n\n");
+        printf("ERROR- La opcion tiene que ser solo numeros del 1 al 6\n\n");
 
         system("pause");
     }
@@ -608,3 +612,43 @@ int sortSocios(eSocios list[], int len)
     return ret;
 
 };
+
+void ordenacion_insercion (eSocios* ordn, int len)
+{
+    int p, j;
+
+    eSocios tmp;
+    for (p = 1; p < len; p++)
+    {
+        strcpy(tmp.lastName,ordn[p].lastName);
+        j = p - 1;
+        while ((j >= 0) && strcmp(tmp.lastName, ordn[j].lastName) < 0)
+        {
+            strcpy(ordn[j + 1].lastName,ordn[j].lastName);
+            j--;
+        }
+        strcpy(ordn[j + 1].lastName,tmp.lastName);
+    }
+    printf("Ordenados Por Insercion");
+    system("pause");
+};
+
+void harcodeoSocios(eSocios* list)
+{
+
+    eSocios x[]=
+    {
+        {1,"Hernan","Zota","Masculino","11-2",{12,05,2001},"hernan@gmail.com",0},
+        {2,"Juan","Amanecido","Masculino","143-2",{12,12,2012},"juan@gmail.com",0},
+        {3,"Ricardo","Ruben","Femenino","1123-2",{05,05,2019},"ricardo@gmail.com",0},
+        {4,"Tomas","Carman","Masculino","11-25454",{16,04,2019},"carman@gmail.com",0},
+        {5,"Rosa","DeGuadalupe","Femenino","1451-23223",{02,07,2019},"guadaluup@gmail.com",0},
+
+    };
+
+    for(int i = 0; i< 5; i++)
+    {
+        list[i] = x[i];
+    }
+};
+

@@ -9,6 +9,7 @@
 #include "socios.h"
 #include "prestamos.h"
 
+
 #define MAX 1001
 #define MAXAUT 5
 #define MAXLIB 5
@@ -21,9 +22,14 @@ int main()
     eAutores autores[MAXAUT];
     eLibros libros[MAXLIB];
     ePrestamos prestamos[MAXPRES];
+    eSocios socios[MAX];
+
+    initSocios(socios,MAX);
 
     harcodeoAutores(autores);
     harcodeoLibros(libros);
+    harcodeoSocios(socios);
+
 
 
     {
@@ -36,8 +42,11 @@ int main()
         int exitA=1;
         int exitS=1;
         int exitL=1;
-        eSocios socios[MAX];
-        initSocios(socios,MAX);
+        int cantPres=0;
+        int acumPres=0;
+        int totalPres;
+
+
         initPrestamos(prestamos,MAXPRES);
         int flagSinAlta=0;
         char auxLegajo[5];
@@ -100,7 +109,21 @@ int main()
 
                         };
                         break;
-                    case 5 :
+                        case 5 :
+                        if (flagSinAlta == 0)
+                        {
+                            printf("\nNO EXISTEN SOCIOS EN EL SISTEMA\n\n");
+                            break;
+                        }
+                        else
+                        {
+                            ordenacion_insercion(socios,MAX);
+                            viewSocios(socios, MAX);
+                            exitS =0;
+
+                        };
+                        break;
+                    case 6 :
                         printf("Volviendo a menu principal");
                         exitS=1;
                         break;
@@ -152,6 +175,11 @@ int main()
                         exitL =0;
                         break;
                     case 2 :
+                        sortLibros(libros,MAXLIB);
+                        printf("\n\nLIBROS ORDENADOS POR TITULO DE FORMA DESCENDETE\n\n");
+                        system("pause");
+                        break;
+                    case 3 :
                         printf("Volviendo a menu principal");
                         exitL=1;
                         break;
@@ -258,8 +286,17 @@ int main()
                         switch(funcion_opcionesPrestamos())
                         {
                         case 1 :
+
+
                             addPrestamo(prestamos,MAXPRES,socios,MAX,libros,MAXLIB);
+                            cantPres++;
+                            totalPres = (acumPres + cantPres);
+
+                            system("pause");
                             exitP =0;
+
+
+
                             break;
                         case 2 :
                             while(!funcion_getStringNumeros("Ingrese codigo del socio para ver sus prestamos: ",auxLegajo))
@@ -268,6 +305,7 @@ int main()
                                 system("pause");
                                 system("cls");
                             };
+                           // viewPrestamoID(prestamos,socios,auxLegajo,libros);
 
 
                             exitP=0;
@@ -319,7 +357,13 @@ int main()
                 };
 
                 break;
-            case 5://SALIR
+                case 5://informes
+                printf("\n\nTotal general de prestamos: %d\n\n",totalPres);
+                mostrarlibrosdesocios(libros,MAXLIB,socios,MAX,prestamos,MAXPRES);
+                system("pause");
+
+                break;
+                 case 6://SALIR
                 printf("Saliendo...");
                 exit(-1);
                 break;
@@ -360,10 +404,11 @@ int funcion_opciones()
     printf(" 2- LIBROS \n");
     printf(" 3- AUTORES \n");
     printf(" 4- PRESTAMOS \n");
-    printf(" 5- SALIR \n");
-    while(!funcion_getStringNumeros("Ingrese una opcion del 1-5 : ",auxOpcion))
+    printf(" 5- INFORMES \n");
+    printf(" 6- SALIR \n");
+    while(!funcion_getStringNumeros("Ingrese una opcion del 1-6 : ",auxOpcion))
     {
-        printf("ERROR- La opcion tiene que ser solo numeros del 1 al 5\n\n");
+        printf("ERROR- La opcion tiene que ser solo numeros del 1 al 6\n\n");
 
         system("pause");
     }

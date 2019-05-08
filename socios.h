@@ -23,4 +23,7 @@ int removeSocio(eSocios* list, int len);
 void modifySocio(eSocios list[], int len);
 int sortSocios(eSocios list[], int len);
 int funcion_opcionesSocios();
+void ordenacion_insercion (eSocios* A, int len);
+void harcodeoSocios(eSocios* list);
+
 

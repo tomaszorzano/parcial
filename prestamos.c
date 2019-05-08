@@ -9,6 +9,7 @@
 #include "socios.h"
 #include "prestamos.h"
 
+
 #define MAXPREST 21
 #define MAXLIB 5
 #define MAXSOC 101
@@ -64,31 +65,47 @@ int findPrestamos(ePrestamos list[],int len, int file)
 
 };
 
-void viewPrestamo(ePrestamos aPrestamos, eSocios listSoc[],int index, eLibros listLib[],int indexL)
+void viewPrestamoADD(ePrestamos aPrestamos, eSocios listSoc[],int indexS, eLibros listLib[],int indexl)
 {
+    int codigoLib;
+    int indexLib;
 
+    viewSocio(listSoc[indexS]);
+    codigoLib=aPrestamos.libroPre.id;
+    indexLib=findLibroXCodigo(listLib,MAXLIB,codigoLib);
+    viewLibro(listLib[indexLib]);
+    printf(" \nCodigo Prestamo:%d - Legajo Socio:%d-\n\nFecha de Prestamo\n\n Dia:%d- Mes:%d- Anio:%d \n---------------------------\n ", aPrestamos.codigoPrestamo, aPrestamos.socioPre.file,aPrestamos.fechaPre.dia,aPrestamos.fechaPre.mes,aPrestamos.fechaPre.anio);
+};
+void viewPrestamoID(ePrestamos aPrestamos, eSocios listSoc[],int indexS, eLibros listLib[])
+{
+    int codigoLib;
+    int indexLib;
 
-    viewSocio(listSoc[index]);
-    viewLibro(listLib[indexL]);
-    printf(" \nCodigo Libro:%d - Legajo Socio:%d-\n\nFecha de Prestamo\n\n Dia:%d- Mes:%d- Anio:%d \n---------------------------\n ", aPrestamos.codigoPrestamo, aPrestamos.socioPre.file,aPrestamos.fechaPre.dia,aPrestamos.fechaPre.mes,aPrestamos.fechaPre.anio);
+    viewSocio(listSoc[indexS]);
+    codigoLib=aPrestamos.libroPre.id;
+    indexLib=findLibroXCodigo(listLib,MAXLIB,codigoLib);
+    viewLibro(listLib[indexLib]);
+    printf(" \nCodigo Prestamo:%d - Legajo Socio:%d-\n\nFecha de Prestamo\n\n Dia:%d- Mes:%d- Anio:%d \n---------------------------\n ", aPrestamos.codigoPrestamo, aPrestamos.socioPre.file,aPrestamos.fechaPre.dia,aPrestamos.fechaPre.mes,aPrestamos.fechaPre.anio);
 };
 
-void viewPrestamos(ePrestamos list[], int len, eSocios listSoc[],int index,eLibros listLib[],int indexL)
+/*void viewPrestamos(ePrestamos list[], int len, eSocios listSoc[],int index,eLibros listLib[],int indexL)
 {
+
 
     system("cls");
 
 
-    for(int i=0; i < len; i++)
+    for(int i=1; i < len; i++)
     {
 
         if( list[i].isEmpty == 0)
         {
-            viewPrestamo(list[i],listSoc,index,listLib,indexL);
+            viewPrestamos(list[i].codigoPrestamo,MAXPREST,listSoc,index,listLib,indexL);
         }
     }
 
-};
+};*/
+
 int addPrestamo(ePrestamos list[],int len,eSocios listSoc[],int lenSoc,eLibros listLib[],int lenLib)
 {
 
@@ -110,13 +127,16 @@ int addPrestamo(ePrestamos list[],int len,eSocios listSoc[],int lenSoc,eLibros l
     char codigoLibro[5];
     int indexLibro=0;
 
+    /*int contPres=0;
+    int contDia=0;
+    int totalDias=0;
+    int acumPres=0;
+    int acumDia=0;
+    int totalPres=0;
+    int promedioDiario=0;*/
 
-    //Contadores
-    int contLibro1=0;
-    int contLibro2=0;
-    int contLibro3=0;
-    int contLibro4=0;
-    int contLibro5=0;
+
+
 
     char auxLastName[51];
     float ret;
@@ -248,6 +268,13 @@ int addPrestamo(ePrestamos list[],int len,eSocios listSoc[],int lenSoc,eLibros l
 
                 fecha=1;
 
+               /* if ((atoi(auxDia)==1||atoi(auxDia)==2||atoi(auxDia)==3||atoi(auxDia)==4||atoi(auxDia)==5||atoi(auxDia)==6||atoi(auxDia)==7)&&(atoi(auxMes)==1)&&(atoi(auxAnio)==2019))
+                {
+                    contDia++;
+                    contPres++;
+                    acumDia=acumDia+contDia;
+                    acumPres=acumPres+contPres;
+                }*/
 
             }
                 indexE=findSocio(listSoc,MAXSOC,atoi(auxLegajo));
@@ -275,7 +302,10 @@ int addPrestamo(ePrestamos list[],int len,eSocios listSoc[],int lenSoc,eLibros l
                 system("cls");
                 printf("\n\n********PRESTAMO CARGADO CORRECTAMENTE*********\n\n");
 
-                viewPrestamo(list[index],listSoc,indexE,listLib,indexLibro);
+
+
+
+                viewPrestamoADD(list[index],listSoc,indexE,listLib,indexLibro);
                 printf("\n\n\n");
                 ret=0;
                 break;
@@ -314,3 +344,40 @@ int funcion_opcionesPrestamos()
 
     return opcionIngresada;
 };
+void mostrarlibrosdesocios(eLibros list[],int lenL,eSocios listSoc[],int lenSoc,ePrestamos listPres[],int lenPres)
+{
+    char auxLegajo[5];
+    int indexLibro;
+    int indexSocio;
+    int codigoLibro;
+
+    system("cls");
+
+    viewSocios(listSoc,lenSoc);
+    while(!funcion_getStringNumeros("Ingrese codigo del socio para ver sus prestamos: ",auxLegajo))
+                            {
+                                printf("ERROR- EL CODIGO TIENE QUE CONTENER SOLO NUMEROS\n\n ");
+                                system("pause");
+                                system("cls");
+                            };
+
+    indexSocio = findSocio(listSoc,lenSoc,atoi(auxLegajo));
+    printf("\n\nEl socio %s %s solicito los libros: \n",listSoc[indexSocio].name,listSoc[indexSocio].lastName);
+
+    for(int i = 0;i < lenPres;i++)
+    {
+        if(atoi(auxLegajo) == listPres[i].socioPre.file)
+        {
+            codigoLibro = listPres[i].libroPre.id;
+            indexLibro = findLibroXCodigo(list,MAXLIB,codigoLibro);
+            printf("\n");
+            viewLibro(list[indexLibro]);
+            printf("\n");
+        }
+
+
+    }
+
+
+
+}

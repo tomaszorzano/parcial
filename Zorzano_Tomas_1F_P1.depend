@@ -153,3 +153,81 @@
 	"socios.h"
 	"prestamos.h"
 
+1557274337 source:d:\zorzano_tomas_1f_p1\parcial-master\autores.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"autores.h"
+	"Funciones.h"
+
+1557265047 d:\zorzano_tomas_1f_p1\parcial-master\autores.h
+
+1557265047 d:\zorzano_tomas_1f_p1\parcial-master\funciones.h
+
+1557265047 source:d:\zorzano_tomas_1f_p1\parcial-master\fecha.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"Funciones.h"
+	"fecha.h"
+
+1557265047 d:\zorzano_tomas_1f_p1\parcial-master\fecha.h
+
+1557265047 source:d:\zorzano_tomas_1f_p1\parcial-master\funciones.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"funciones.h"
+
+1557275872 source:d:\zorzano_tomas_1f_p1\parcial-master\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"Funciones.h"
+	"fecha.h"
+	"autores.h"
+	"libros.h"
+	"socios.h"
+	"prestamos.h"
+
+1557267894 d:\zorzano_tomas_1f_p1\parcial-master\libros.h
+
+1557273653 d:\zorzano_tomas_1f_p1\parcial-master\socios.h
+
+1557275743 d:\zorzano_tomas_1f_p1\parcial-master\prestamos.h
+
+1557274196 source:d:\zorzano_tomas_1f_p1\parcial-master\socios.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"Funciones.h"
+	"fecha.h"
+	"libros.h"
+	"socios.h"
+	"prestamos.h"
+
+1557268151 source:d:\zorzano_tomas_1f_p1\parcial-master\libros.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"Funciones.h"
+	"autores.h"
+	"libros.h"
+
+1557275889 source:d:\zorzano_tomas_1f_p1\parcial-master\prestamos.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"Funciones.h"
+	"autores.h"
+	"fecha.h"
+	"libros.h"
+	"socios.h"
+	"prestamos.h"
+
