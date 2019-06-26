@@ -1,97 +1,61 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <ctype.h>
-#include "Funciones.h"
+#include "funciones.h"
 #include "fecha.h"
 
-int funcion_ValidarFecha(char dia[11],char mes[11],char anio[11])
+void ingresarDia(char auxDia[])
 {
-    int auxDia,auxMes,auxAnio,ret=0;
+    int dia;
 
-    auxDia=atoi(dia);
-    auxMes=atoi(mes);
-    auxAnio=atoi(anio);
-
-    if ( ((auxMes >= 1) && (auxMes <= 12)) )
+    do //do while para validar
     {
-        switch ( auxMes )
+        while(!function_getStringNumeros("Ingrese el dia(Del 1 al 31):",auxDia))
         {
-        case  1 :
-        case  3 :
-        case  5 :
-        case  7 :
-        case  8 :
-        case 10 :
-        case 12 :
-            if ( auxDia >= 1 && auxDia <= 31 )
-            {
-                ret=1;
-            }
-            else
-            {
-                printf("Dia incorrecto\n\n");
-                system("pause");
-                ret=0;
-
-            }
-            break;
-
-        case  4 :
-        case  6 :
-        case  9 :
-        case 11 :
-            if ( auxDia >= 1 && auxDia<= 30 )
-            {
-                ret=1;
-            }
-            else
-            {
-                printf("Dia incorrecto\n\n");
-                system("pause");
-                ret=0;
-            }
-
-            break;
-
-        case  2 :
-            if ( ((auxAnio % 4 == 0) && (auxAnio % 100 != 0)) || (auxAnio % 400 == 0 ))
-            {
-                if ( auxDia >= 1 && auxDia <= 29 )
-                {
-                    ret=1;
-                }
-                else
-                {
-                    printf("Dia incorrecto\n\n");
-                    system("pause");
-                    ret=0;
-                }
-
-            }
-            else if ( auxDia >= 1 && auxDia <= 28 )
-            {
-                ret=1;
-            }
-            else
-            {
-                printf("Dia incorrecto\n\n");
-                system("pause");
-                ret=0;
-            }
-
-            break;
-
-
+            printf("**** Error ****Debe ingresar un numero del 1 al 31.\n\n");
+            system("pause");
+            system("cls");
+        }
+        dia = atoi(auxDia);
+        if(dia < 0 || dia > 31)
+        {
+            printf("**** Error ****Debe ingresar un numero del 1 al 31.\n\n");
 
         }
 
     }
-    else
-    {
-        printf("Mes Ingresado es incorrecto\n\n");
-        system("pause");
-    }
+    while(dia < 0 || dia > 31);
+}
 
-    return ret;
+void ingresarMes(char auxMes[])
+{
+    int mes;
+
+    do //do while para validar el mes
+    {
+        while(!function_getStringNumeros("Ingrese el mes(Del 1 al 12):",auxMes))
+        {
+            printf("**** Error ****Debe ingresar un numero del 1 al 12.\n\n");
+            system("pause");
+            system("cls");
+        }
+        mes = atoi(auxMes);
+        if(mes < 0 || mes > 12)
+        {
+            printf("***Error*** El mes debe ser del 1 al 12");
+        }
+    }
+    while(mes < 0 || mes > 12);
+}
+
+void ingresarAnio(char auxAnio[])
+{
+while(!function_getStringNumeros("Ingrese el anio(4 digitos, EJ:1998):",auxAnio))
+{
+    printf("**** Error ****Debe ingresar numeros.\n\n");
+    system("pause");
+    system("cls");
+}
+
+
 }

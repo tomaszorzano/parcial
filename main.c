@@ -1,420 +1,192 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <ctype.h>
-#include "Funciones.h"
+#include "funciones.h"
 #include "fecha.h"
 #include "autores.h"
 #include "libros.h"
 #include "socios.h"
 #include "prestamos.h"
-
-
-#define MAX 1001
-#define MAXAUT 5
-#define MAXLIB 5
-#define MAXPRES 21
-#define MAXF 1001
-int funcion_opciones();
+#include "informes.h"
+#define tamSocios 100
+#define tamAutores 5
+#define tamLibros 5
+#define tamPrestamos 20
 
 int main()
 {
-    eAutores autores[MAXAUT];
-    eLibros libros[MAXLIB];
-    ePrestamos prestamos[MAXPRES];
-    eSocios socios[MAX];
-
-    initSocios(socios,MAX);
-
-    harcodeoAutores(autores);
-    harcodeoLibros(libros);
-    harcodeoSocios(socios);
+    //declaro variables
+    char salir = 'n';
+    char salirPrestamo = 'n';
+    char salirInformes = 'n';
+    eSocios sociosBiblioteca[tamSocios]; // se define al tipo eSocios el tamanio con el tamSocios
+    eAutores escritores[tamAutores];
+    eLibro exitos[tamLibros];
+    ePrestamos prestamos[tamPrestamos];
 
 
+    initSocios(sociosBiblioteca,tamSocios); //se inicializa todos los isEmpty en 1 indicando que estan vacios
+    iniciarPrestamo(prestamos,tamPrestamos);
+    hardcodeoSocios(sociosBiblioteca);
+    hardcodeoAutores(escritores);
+    hardcodeoLibros(exitos);
+    hardcodeoPrestamos(prestamos);
 
+    do
     {
-        char seguir='s';
-        char seguirS='s';
-        char seguirL='s';
-        char seguirA='s';
-        char seguirP='s';
-        int exitP=1;
-        int exitA=1;
-        int exitS=1;
-        int exitL=1;
-        int cantPres=0;
-        int acumPres=0;
-        int totalPres;
-
-
-        initPrestamos(prestamos,MAXPRES);
-        int flagSinAlta=0;
-        char auxLegajo[5];
-
-
-
-        do
+        switch(menuSocios())
         {
-
-            switch (funcion_opciones())
+        case 1: //ALTA SOCIO
+            addSocio(sociosBiblioteca,tamSocios);
+            break;
+        case 2: //MODIFICAR SOCIO
+            if(haySocioCargado(sociosBiblioteca,tamSocios)) //SE UTILIZA ESTA FUNCION PARA CHEQUEAR QUE SE HAYA CARGADO UN SOCIO
             {
-            case 1://MENU SOCIOS
-
-                do
-                {
-                    switch(funcion_opcionesSocios())
-                    {
-                    case 1 :
-                        addSocio(socios, MAX);
-                        flagSinAlta++;
-                        exitS =0;
-                        break;
-                    case 2 :
-                        if (flagSinAlta == 0)
-                        {
-                            printf("\nNO EXISTEN SOCIOS EN EL SISTEMA\n\n");
-                            break;
-                        }
-                        else
-                        {
-                            modifySocio(socios, MAX);
-                            exitS =0;
-
-                        };
-                        break;
-                    case 3 :
-                        if (flagSinAlta == 0)
-                        {
-                            printf("\nNO EXISTEN SOCIOS EN EL SISTEMA\n\n");
-                            break;
-                        }
-                        else
-                        {
-                            removeSocio(socios, MAX);
-                            exitS =0;
-
-                        };
-                        break;
-                    case 4 :
-                        if (flagSinAlta == 0)
-                        {
-                            printf("\nNO EXISTEN SOCIOS EN EL SISTEMA\n\n");
-                            break;
-                        }
-                        else
-                        {
-                            sortSocios(socios,MAX);
-                            viewSocios(socios, MAX);
-                            exitS =0;
-
-                        };
-                        break;
-                        case 5 :
-                        if (flagSinAlta == 0)
-                        {
-                            printf("\nNO EXISTEN SOCIOS EN EL SISTEMA\n\n");
-                            break;
-                        }
-                        else
-                        {
-                            ordenacion_insercion(socios,MAX);
-                            viewSocios(socios, MAX);
-                            exitS =0;
-
-                        };
-                        break;
-                    case 6 :
-                        printf("Volviendo a menu principal");
-                        exitS=1;
-                        break;
-                    default:
-                        printf("\n\nOpcion ingresada incorrecta, por favor ingrese una opcion del 1 al 5\n\n");
-                        system("pause");
-                        break;
-                    }
-                    if(exitS==0)
-
-                    {
-                        printf("\n *** Socios ***");
-                        printf("\nDesea continuar en menu socios? \n\n");
-
-                        scanf("%c",&seguirS);
-
-
-                        fflush(stdin);
-                        system("cls");
-
-                    }
-
-                    else
-                    {
-                        printf("\n\nEsta por salir del menu socios esta seguro? s/n \n\n");
-                        scanf("%c",&seguirS);
-                        if(seguirS == 's' || seguirS == 'S')
-                        {
-                            seguirS='n';
-                        }
-                        fflush(stdin);
-                        system("cls");
-
-                    }
-
-                }
-                while (seguirS == 's' || seguirS == 'S');
-
-
+                modifySocio(sociosBiblioteca,tamSocios);
                 break;
-            case 2: //MENU LIBROS
-
-                do
-                {
-                    switch(funcion_opcionesLibros())
-                    {
-                    case 1 :
-                        viewlibros(libros,MAXLIB);
-                        exitL =0;
-                        break;
-                    case 2 :
-                        sortLibros(libros,MAXLIB);
-                        printf("\n\nLIBROS ORDENADOS POR TITULO DE FORMA DESCENDETE\n\n");
-                        system("pause");
-                        break;
-                    case 3 :
-                        printf("Volviendo a menu principal");
-                        exitL=1;
-                        break;
-                    default:
-                        printf("\n\nOpcion ingresada incorrecta, por favor ingrese una opcion del 1 al 2\n\n");
-                        system("pause");
-                        break;
-                    }
-                    if(exitL==0)
-
-                    {
-                        printf("\n *** Libros ***");
-                        printf("\nDesea continuar en menu libros? \n\n");
-
-                        scanf("%c",&seguirL);
-                        if(seguirL == 's' || seguirL == 'S')
-                        {
-                            seguirL='s';
-                        }
-
-                        fflush(stdin);
-                        system("cls");
-
-                    }
-
-                    else
-                    {
-                        printf("\n\nEsta por salir del menu libros esta seguro? s/n \n\n");
-                        scanf("%c",&seguirL);
-                        if(seguirL == 's' || seguirL == 'S')
-                        {
-                            seguirL='n';
-                        }
-                        fflush(stdin);
-                        system("cls");
-
-                    }
-
-                }
-                while (seguirL == 's' || seguirL == 'S');
-                break;
-
-            case 3: //MENU AUTORES
-                do
-                {
-                    switch(funcion_opcionesAutores())
-                    {
-                    case 1 :
-                        viewAutores(autores,MAXAUT);
-                        exitA =0;
-                        break;
-                    case 2 :
-                        printf("Volviendo a menu principal");
-                        exitA=1;
-                        break;
-                    default:
-                        printf("\n\nOpcion ingresada incorrecta, por favor ingrese una opcion del 1 al 2\n\n");
-                        system("pause");
-                        break;
-                    }
-                    if(exitA==0)
-
-                    {
-                        printf("\n *** AUTORES ***");
-                        printf("\nDesea continuar en menu autores? \n\n");
-
-                        scanf("%c",&seguirA);
-                        if(seguirA == 's' || seguirA == 'S')
-                        {
-                            seguirA='s';
-                        }
-
-                        fflush(stdin);
-                        system("cls");
-
-                    }
-
-                    else
-                    {
-                        printf("\n\nEsta por salir del menu autores esta seguro? s/n \n\n");
-                        scanf("%c",&seguirA);
-                        if(seguirA == 's' || seguirA == 'S')
-                        {
-                            seguirA='n';
-                        }
-                        fflush(stdin);
-                        system("cls");
-
-                    }
-
-                }
-                while (seguirA == 's' || seguirA == 'S');
-                break;
-            case 4://MENU PRESTAMOS
-                if (flagSinAlta == 0)
-                {
-                    printf("\nNO EXISTEN SOCIOS EN EL SISTEMA\n\n");
-                    break;
-                }
-                else
-                {
-                    do
-                    {
-                        switch(funcion_opcionesPrestamos())
-                        {
-                        case 1 :
-
-
-                            addPrestamo(prestamos,MAXPRES,socios,MAX,libros,MAXLIB);
-                            cantPres++;
-                            totalPres = (acumPres + cantPres);
-
-                            system("pause");
-                            exitP =0;
-
-
-
-                            break;
-                        case 2 :
-                            while(!funcion_getStringNumeros("Ingrese codigo del socio para ver sus prestamos: ",auxLegajo))
-                            {
-                                printf("ERROR- EL CODIGO TIENE QUE CONTENER SOLO NUMEROS\n\n ");
-                                system("pause");
-                                system("cls");
-                            };
-                           // viewPrestamoID(prestamos,socios,auxLegajo,libros);
-
-
-                            exitP=0;
-                            break;
-                        case 3 :
-                            printf("Volviendo a menu principal");
-                            exitP=1;
-                            break;
-                        default:
-                            printf("\n\nOpcion ingresada incorrecta, por favor ingrese una opcion del 1 al 3\n\n");
-                            system("pause");
-                            break;
-                        }
-                        if(exitP==0)
-
-                        {
-                            printf("\n *** PRESTAMOS ***");
-                            printf("\nDesea continuar en menu prestamos? \n\n");
-
-                            scanf("%c",&seguirP);
-                            if(seguirP == 's' || seguirP == 'S')
-                            {
-                                seguirP='s';
-                            }
-
-                            fflush(stdin);
-                            system("cls");
-
-                        }
-
-                        else
-                        {
-                            printf("\n\nEsta por salir del menu prestamos esta seguro? s/n \n\n");
-                            scanf("%c",&seguirP);
-                            if(seguirP == 's' || seguirP == 'S')
-                            {
-                                seguirP='n';
-                            }
-                            fflush(stdin);
-                            system("cls");
-
-                        }
-
-                    }
-                    while (seguirP == 's' || seguirP == 'S');
-                    break;
-
-
-                };
-
-                break;
-                case 5://informes
-                printf("\n\nTotal general de prestamos: %d\n\n",totalPres);
-                mostrarlibrosdesocios(libros,MAXLIB,socios,MAX,prestamos,MAXPRES);
-                system("pause");
-
-                break;
-                 case 6://SALIR
-                printf("Saliendo...");
-                exit(-1);
-                break;
-
-
-
-            default:
-                printf("\n\nOpcion ingresada incorrecta, por favor ingrese una opcion del 1 al 5\n\n");
-                system("pause");
-                break;
-
             }
-            printf("\n Desea continuar en el ABM? si/no \n\n");
-            scanf("%c",&seguir);
+            else//SI NO HAY NINGUN SOCIO SE INFORMA
+            {
+                printf("***Error*** No hay ningun socio cargado.\n");
+                system("pause");
+                system("cls");
+            }
+            break;
+        case 3://BAJA SOCIO
+            if(haySocioCargado(sociosBiblioteca,tamSocios))
+            {
 
-            fflush(stdin);
+                removeSocio(sociosBiblioteca,tamSocios,0);
+                break;
+            }
+            else
+            {
+                printf("***Error*** No hay ningun socio cargado.\n");
+                system("pause");
+                system("cls");
+            }
+            break;
+        case 4: //listar socios
+            if(haySocioCargado(sociosBiblioteca,tamSocios))
+            {
+                system("cls");
+                sortSocios(sociosBiblioteca,tamSocios); //se ordena los socios
+                showSocios(sociosBiblioteca,tamSocios); // se muestra los socios
+                system("pause");
+            }
+            else
+            {
+                printf("***Error*** No hay ningun socio cargado.\n");
+                system("pause");
+                system("cls");
+            }
+            break;
+        case 5: //LISTAR LIBROS
+            sortLibros(exitos,tamLibros);
+            showLibros(exitos,tamLibros,escritores,tamAutores);
+            printf("\n\n");
+            system("pause");
+            break;
+
+        case 6: //LISTAR AUTORES
+            sortAutores(escritores,tamAutores);
+            showAutores(escritores,tamAutores);
+            printf("\n\n");
+            system("pause");
+            break;
+        case 7: // PRESTAMOS
+            do
+            {
+                switch(menuPrestamos())
+                {
+                case 1:
+                    addPrestamo(sociosBiblioteca,tamSocios,exitos,tamLibros,prestamos,tamPrestamos,escritores,tamAutores);
+                    printf("\n\n");
+                    system("pause");
+                    break;
+                case 2:
+                    system("cls");
+                    mostrarPrestamos(prestamos,tamPrestamos,exitos,tamLibros,sociosBiblioteca,tamSocios);
+                    printf("\n\n");
+                    system("pause");
+                    break;
+                case 3:
+                    salirPrestamo = 's';
+                    printf("\n\nVolviendo al menu principal...\n\n");
+                    system("pause");
+                    break;
+                }
+            }
+            while(salirPrestamo == 'n');
+            break;
+        case 8: // INFORMES
+            do
+            {
+                switch(menuInformes())
+                {
+                case 3:
+                    listarSociosDeLibro(exitos,tamLibros,sociosBiblioteca,tamSocios,escritores,tamAutores,prestamos,tamPrestamos);
+                    printf("\n");
+                    system("pause");
+                    break;
+                case 4:
+                    listarLibrosDeSocio(exitos,tamLibros,sociosBiblioteca,tamSocios,escritores,tamAutores,prestamos,tamPrestamos);
+                    printf("\n");
+                    system("pause");
+                    break;
+                case 7:
+                    libroEnFechaDeterminada(prestamos,tamPrestamos,exitos,tamLibros,escritores,tamAutores);
+                    printf("\n");
+                    system("pause");
+                    break;
+                case 8:
+                    socioEnFechaDeterminada(prestamos,tamPrestamos,sociosBiblioteca,tamSocios);
+                    printf("\n");
+                    system("pause");
+                    break;
+                case 9:
+                    listarLibrosPorTituloBurbujeo(exitos,tamLibros);
+                    showLibros(exitos,tamLibros,escritores,tamAutores);
+                    printf("\n");
+                    system("pause");
+                    break;
+                case 10:
+                    listarSociosPorInsercion(sociosBiblioteca,tamSocios);
+                    showSocios(sociosBiblioteca,tamSocios);
+                    printf("\n");
+                    system("pause");
+                    break;
+                case 11:
+                    printf("\n\nVolviendo...\n");
+                    system("pause");
+                    salirInformes = 's';
+                    break;
+                default:
+                    printf("*** ERROR ***\n\n") ; // el default se utiliza por si se ingresa un numero que no sea del 1 al 8
+                    system("pause");
+                    system("cls");
+                    break;
+                }
+            }
+            while(salirInformes == 'n');
+            break;
+        case 9:
+            printf("\n\nSaliendo...\n");
+            system("pause");
+            salir = 's';
+            break;
+        default:
+            printf("*** ERROR *** Debe ingresar un numero del 1 al 9\n\n") ; // el default se utiliza por si se ingresa un numero que no sea del 1 al 8
+            system("pause");
             system("cls");
-
+            break;
 
         }
-        while (seguir == 's' || seguir == 'S');
 
-        printf("\n\n Saliendo...\n\n");
+
 
     }
+    while(salir == 'n');
+
     return 0;
 }
-
-int funcion_opciones()
-{
-    int opcionIngresada;
-    char auxOpcion[5];
-
-
-    system("cls");
-    printf("\n******* MENU DE OPCIONES ******* \n\n");
-    printf(" 1- SOCIOS \n");
-    printf(" 2- LIBROS \n");
-    printf(" 3- AUTORES \n");
-    printf(" 4- PRESTAMOS \n");
-    printf(" 5- INFORMES \n");
-    printf(" 6- SALIR \n");
-    while(!funcion_getStringNumeros("Ingrese una opcion del 1-6 : ",auxOpcion))
-    {
-        printf("ERROR- La opcion tiene que ser solo numeros del 1 al 6\n\n");
-
-        system("pause");
-    }
-
-    opcionIngresada=atoi(auxOpcion);
-
-
-    return opcionIngresada;
-};

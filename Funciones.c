@@ -1,155 +1,88 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 #include "funciones.h"
 
-/** \brief Suma de dos numeros flotantes.
-    \param Valor asignado a variable "a".
-    \param valor asignado a variable "b".
-    \return Devuelve el resultado de la suma de las dos variables.
-*/
 
-
-float funcion_Suma(float a , float b)
-
+float funcion_suma(float opc1,float opc2)
 {
-    float resSuma;
-    resSuma = a + b;
-    return resSuma;
-};
 
-/** \brief Resta de dos numeros flotant
-    \param Valor asignado a variable "a".
-    \param Valor asignado a variable "b".
-    \return Devuelve el resultado de la resta de las dos variables.
-*/
+    float resp ;
+    resp = opc1 + opc2 ;
+    return resp ;
+}
 
-
-float funcion_Resta(float a,float b)
+float funcion_resta(float opc1,float opc2)
 {
-    float resResta;
-    resResta= a - b;
-    return resResta;
 
-};
+    float resp;
+    resp=opc1-opc2 ;
+    return resp ;
+}
 
-
-/** \brief Multiplicacion de dos numeros flotantes.
-    \param Valor asignado a variable "a".
-    \param Valor asignado a variable "b".
-    \return Devuelve el resultado de la multiplicacion de las dos variables.
-*/
-
-
-
-float funcion_Multiplicacion(float a,float b)
+float funcion_multiplicar(float opc1,float opc2)
 {
-    float resMultiplicacion;
-    resMultiplicacion= a * b;
-    return resMultiplicacion;
 
-};
+    float resp ;
+    resp=opc1*opc2 ;
+    return resp ;
+}
 
-
-/** \brief Division de dos numeros flotantes
-    \param Valor asignado a variable "a".
-    \param Valor asignado a variable "b".
-    \return Devuelve el resultado de la division de las dos variables.
-*/
-
-
-float funcion_Division(float a,float b)
+float funcion_dividir(float opc1,float opc2)
 {
-    float resDivision;
 
-    if(b ==0)
+    float resp ;
+    if(opc2 == 0)
     {
 
-        return -1;
-
+        return -1 ;
     }
     else
     {
-        resDivision=a/b;
-        return resDivision;
+        resp=opc1/opc2 ;
+        return resp ;
     }
+}
 
-
-};
-
-
-/** \brief Factoriza un numero entero
-    \param Valor asignado a variable "a".
-    \return Devuelve el resultado de la factorial de la variable.
-*/
-
-
-
-int funcion_Factorial(int a)
+int funcion_factorial(int opc1)
 {
-    int valor;
-    if(a==0)
+    int resp;
+    if(opc1==0)
     {
         return 1;
     }
-    valor=a*funcion_Factorial(a-1);
-    return valor;
-};
 
-/**
- * \brief Solicita un número al usuario y devuelve el resultado
- * \param mensaje Es el mensaje a ser mostrado
- * \return El número ingresado por el usuario
- *
- */
-float funcion_getFloat(char* mensaje)
+    resp=opc1*funcion_factorial(opc1-1) ;
+    return resp ;
+}
+// funciones get
+float function_getFloat(char msj[])
 {
-    float auxiliar;
-    printf("%s",mensaje);
-    scanf("%f",&auxiliar);
-    return auxiliar;
+    float aux;
+    printf("%s",msj);
+    scanf("%f",&aux);
+    return aux;
 }
 
-
-/**
- * \brief Solicita un número al usuario y devuelve el resultado
- * \param mensaje Es el mensaje a ser mostrado
- * \return El número ingresado por el usuario
- *
- */
-int funcion_getInt(char* mensaje)
+int function_getInt(char msj[] )
 {
-    int auxiliar;
-    printf("%s",mensaje);
-    scanf("%d",&auxiliar);
-    return auxiliar;
+    int resultado;
+    printf("%s",msj);
+    scanf("%d",&resultado);
+    return resultado;
 }
 
-
-/**
- * \brief Solicita un caracter al usuario y devuelve el resultado
- * \param mensaje Es el mensaje a ser mostrado
- * \return El caracter ingresado por el usuario
- *
- */
-char funcion_getChar(char* mensaje)
+char function_getChar(char msj[])
 {
-    char auxiliar;
-    printf("%s",mensaje);
+    char aux;
+    printf("%s",msj);
     fflush(stdin);
-    scanf("%c",&auxiliar);
-    return auxiliar;
+    scanf("%c",&aux);
+    return aux;
 }
 
-
-/**
- * \brief Verifica si el valor recibido es numérico aceptando flotantes
- * \param str Array con la cadena a ser analizada
- * \return 1 si es númerico y 0 si no lo es
- *
- */
-
-int funcion_validarNumeroFlotante(char str[])
+int esNumericoFlotante(char str[])
 {
    int i=0;
    int cantidadPuntos=0;
@@ -169,109 +102,84 @@ int funcion_validarNumeroFlotante(char str[])
    return 1;
 }
 
-/**
- * \brief Verifica si el valor recibido es numérico
- * \param str Array con la cadena a ser analizada
- * \return 1 si es númerico y 0 si no lo es
- *
- */
-
-int funcion_ValidarNumero(char str[])
+int function_esNum(char str[])
 {
-   int i=0;
-   while(str[i] != '\0')
-   {
-       if(str[i] < '0' || str[i] > '9')
-           return 0;
-       i++;
-   }
-   return 1;
+    int i=0;
+    while(str[i] != '\0')
+    {
+        if(str[i] < '0' || str[i] > '9')
+            return 0;
+        i++;
+    }
+    return 1;
 }
 
-/**
- * \brief Verifica si el valor recibido contiene solo letras
- * \param str Array con la cadena a ser analizada
- * \return 1 si contiene solo ' ' y letras y 0 si no lo es
- *
- */
-int funcion_validarSoloLetras(char str[])
+int function_esSoloLetras(char str[])
 {
-   int i=0;
-   while(str[i] != '\0')
-   {
-       if((str[i] != ' ') && (str[i] < 'a' || str[i] > 'z') && (str[i] < 'A' || str[i] > 'Z'))
-           return 0;
-       i++;
-   }
-   return 1;
+    int i=0;
+    while(str[i] != '\0')
+    {
+        if((str[i] != ' ') && (str[i] < 'a' || str[i] > 'z') && (str[i] < 'A' || str[i] > 'Z'))
+            return 0;
+        i++;
+    }
+    return 1;
 }
 
-
-/**
- * \brief Verifica si el valor recibido contiene solo letras y números
- * \param str Array con la cadena a ser analizada
- * \return 1 si contiene solo espacio o letras y números, y 0 si no lo es
- *
- */
-int funcion_validarAlfaNumerico(char str[])
+int function_esAlfaNumerico(char str[])
 {
-   int i=0;
-   while(str[i] != '\0')
-   {
-       if((str[i] != ' ') && (str[i] < 'a' || str[i] > 'z') && (str[i] < 'A' || str[i] > 'Z') && (str[i] < '0' || str[i] > '9'))
-           return 0;
-       i++;
-   }
-   return 1;
+    int i=0;
+    while(str[i] != '\0')
+    {
+        if((str[i] != ' ') && (str[i] < 'a' || str[i] > 'z') && (str[i] < 'A' || str[i] > 'Z') && (str[i] < '0' || str[i] > '9'))
+            return 0;
+        i++;
+    }
+    return 1;
 }
 
-
-/**
- * \brief Verifica si el valor recibido contiene solo números, + y -
- * \param str Array con la cadena a ser analizada
- * \return 1 si contiene solo numeros, espacios y un guion.
- *
- */
-int funcion_ValidarTelefono(char str[])
+int function_esTelefono(char str[])
 {
-   int i=0;
-   int contadorGuiones=0;
-   while(str[i] != '\0')
-   {
-       if((str[i] != ' ') && (str[i] != '-') && (str[i] < '0' || str[i] > '9'))
-           return 0;
-       if(str[i] == '-')
+    int i=0;
+    int contadorGuiones=0;
+    while(str[i] != '\0')
+    {
+        if((str[i] != ' ') && (str[i] != '-') && (str[i] < '0' || str[i] > '9'))
+            return 0;
+        if(str[i] == '-')
             contadorGuiones++;
-       i++;
-   }
-   if(contadorGuiones==1) // debe tener un guion
+        i++;
+    }
+    if(contadorGuiones==1) // debe tener un guion
         return 1;
 
     return 0;
 }
-/**
- * \brief Solicita un texto al usuario y lo devuelve
- * \param mensaje Es el mensaje a ser mostrado
- * \param input Array donde se cargará el texto ingresado
- * \return void
- */
-void funcion_getString(char mensaje[],char input[])
+
+void function_getString (char msj[],char input[])
 {
-    printf("%s",mensaje);
-    gets(input);
+    printf("%s",msj);
+    fflush(stdin) ;
+    gets(input) ;
 }
 
-/**
- * \brief Solicita un texto al usuario y lo devuelve
- * \param mensaje Es el mensaje a ser mostrado
- * \param input Array donde se cargará el texto ingresado
- * \return 1 si el texto contiene solo letras
- */
-int funcion_getStringLetras(char mensaje[],char input[])
+int function_getStringLetras(char msj[],char input[])
 {
     char aux[256];
-    funcion_getString(mensaje,aux);
-    if(funcion_validarSoloLetras(aux))
+    function_getString(msj,aux);
+    if(function_esSoloLetras(aux))
+    {
+        strcpy(input,aux);
+        return 1;
+    }
+    return 0 ;
+}
+
+int function_getStringNumeros(char msj[],char input[])
+{
+    char aux[256];
+    function_getString(msj,aux);
+    if(function_esNum(aux))
     {
         strcpy(input,aux);
         return 1;
@@ -279,17 +187,11 @@ int funcion_getStringLetras(char mensaje[],char input[])
     return 0;
 }
 
-/**
- * \brief Solicita un texto numérico al usuario y lo devuelve
- * \param mensaje Es el mensaje a ser mostrado
- * \param input Array donde se cargará el texto ingresado
- * \return 1 si el texto contiene solo números
- */
-int funcion_getStringNumeros(char mensaje[],char input[])
+int getStringNumerosFlotantes(char mensaje[],char input[])
 {
     char aux[256];
-    funcion_getString(mensaje,aux);
-    if(funcion_ValidarNumero(aux))
+    function_getString(mensaje,aux);
+    if(esNumericoFlotante(aux))
     {
         strcpy(input,aux);
         return 1;
@@ -297,74 +199,66 @@ int funcion_getStringNumeros(char mensaje[],char input[])
     return 0;
 }
 
-
-/**
- * \brief Solicita un texto numérico al usuario y lo devuelve (acepta flotantes)
- * \param mensaje Es el mensaje a ser mostrado
- * \param input Array donde se cargará el texto ingresado
- * \return 1 si el texto contiene solo números
- */
-int funcion_getStringNumerosFlotantes(char mensaje[],char input[])
+int menu ( )
 {
-    char aux[256];
-    funcion_getString(mensaje,aux);
-    if(funcion_validarNumeroFlotante(aux))
+    char auxOption[2];
+    int option;
+    system("cls") ;
+    printf("\n\t\t*** MENU PRINCIPAL ***\n\n");
+    printf("1-MENUES \n");
+    printf("2-EMPLEADOS \n") ;
+    printf("3-ALMUERZOS \n");
+    printf("4-INFORMES \n");
+    printf("5-SALIR\n\n") ;
+    while(!function_getStringNumeros("Ingresar opcion: ",auxOption))
     {
-        strcpy(input,aux);
-        return 1;
+        printf("\n*** ERROR *** Debe ingresar un numero del 1 al 5. \n") ;
+        system("pause") ;
+
     }
-    return 0;
+    option = atoi(auxOption) ;
+    return option;
 }
 
-int funcion_getStringTelefono(char mensaje[],char input[])
-{
-    char aux[256];
-    funcion_getString(mensaje,aux);
-    if(funcion_ValidarTelefono(aux))
-    {
-        strcpy(input,aux);
-        return 1;
-    }
-    return 0;
-}
 
-int funcion_validarEmail(char str[])
-{
-   int i=0;
-   int contadorArroba=0;
-   while(str[i] != '\0')
-   {
-       if((str[i] != ' ') && (str[i] < 'a' || str[i] > 'z') && (str[i] < 'A' || str[i] > 'Z') && (str[i] < '0' || str[i] > '9') && (str[i] != '@') && (str[i] != '.')&& (str[i] != '_')&& (str[i] != '-')&& (str[i] != '/'))
-           return 0;
-           if(str[i] == '@')
-            contadorArroba++;
 
-       i++;
-   }
-   if(contadorArroba==1) // debe tener un guion
-        return 1;
-   return 0;
-}
+void function_validName(char text[])
+    {
+        int dentro_de_palabra = 0; // Al principio está fuera
+        for (int i = 0; text[i] != '\0'; i++)
+        {
+            if (text[i] == ' ')
+            {
+                dentro_de_palabra = 0; // Fuera de palabra
+            }
+            else
+            {
+                if (dentro_de_palabra)
+                {
+                    // Ya estábamos dentro de una palabra
+                    text[i] = tolower(text[i]);
+                }
+                else
+                {
+                    // Acabamos de entrar en una nueva palabra
+                    dentro_de_palabra = 1;
+                    text[i] = toupper(text[i]);
+                }
+            }
+        }
+    }
 
-int funcion_getStringEmail(char mensaje[],char input[])
+char* getDynamicString(char* msg)
 {
-    char aux[256];
-    funcion_getString(mensaje,aux);
-    if(funcion_validarEmail(aux))
-    {
-        strcpy(input,aux);
-        return 1;
-    }
-    return 0;
-}
-int funcion_getStringAlfaNumerico(char mensaje[],char input[])
-{
-    char aux[256];
-    funcion_getString(mensaje,aux);
-    if(funcion_validarAlfaNumerico(aux))
-    {
-        strcpy(input,aux);
-        return 1;
-    }
-    return 0;
+    printf(msg);
+
+    char* pData = (char*)malloc(sizeof(char)*1024);
+
+    scanf("%1023s",pData); // cantidad maxima 1023 (dejamos 1 byte para terminador)
+
+    int len = strlen(pData);
+
+    pData = (char*)realloc(pData,sizeof(char)*(len+1)); //realloc de len (cantidad de letras) + 1  byte por caracter terminador
+
+    return pData;
 }

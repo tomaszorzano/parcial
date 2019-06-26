@@ -1,13 +1,18 @@
 typedef struct
 {
-    int codigo;
-    char nombre[51];
-    char apellido[51];
+    int codigoDeAutor;
+    char apellido[31];
+    char nombre[31];
     int isEmpty;
-} eAutores;
 
-void harcodeoAutores(eAutores* list);
-void viewAutor(eAutores aAutores);
-void viewAutores(eAutores list[], int len);
-int funcion_opcionesAutores();
+}eAutores;
 
+void hardcodeoAutores(eAutores* list);
+
+void showAutor(eAutores list);
+
+void showAutores(eAutores list[],int len);
+
+int obtenerAutor(eAutores list[], int len, int idAutor, char apellido[],char nombre[]);
+
+int sortAutores(eAutores list[], int len);

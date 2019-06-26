@@ -76,82 +76,75 @@
 
 1557188697 d:\zorzano_tomas_1f_p1\prestamos.h
 
-1557241364 source:c:\users\t13774\desktop\facultad\parcial-master\autores.c
+1561576619 source:c:\users\t13774\desktop\facultad\parcial-master\autores.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
-	<ctype.h>
 	"autores.h"
-	"Funciones.h"
 
-1557241364 c:\users\t13774\desktop\facultad\parcial-master\autores.h
+1561576619 c:\users\t13774\desktop\facultad\parcial-master\autores.h
 
-1557236385 c:\users\t13774\desktop\facultad\parcial-master\funciones.h
+1561576621 c:\users\t13774\desktop\facultad\parcial-master\funciones.h
 
-1557236384 source:c:\users\t13774\desktop\facultad\parcial-master\fecha.c
-	<stdio.h>
-	<stdlib.h>
-	<string.h>
-	<ctype.h>
-	"Funciones.h"
-	"fecha.h"
-
-1557236384 c:\users\t13774\desktop\facultad\parcial-master\fecha.h
-
-1557236384 source:c:\users\t13774\desktop\facultad\parcial-master\funciones.c
+1561576619 source:c:\users\t13774\desktop\facultad\parcial-master\fecha.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	"funciones.h"
+	"fecha.h"
 
-1557243129 source:c:\users\t13774\desktop\facultad\parcial-master\libros.c
+1561576619 c:\users\t13774\desktop\facultad\parcial-master\fecha.h
+
+1561576918 source:c:\users\t13774\desktop\facultad\parcial-master\funciones.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	<ctype.h>
-	"Funciones.h"
+	"funciones.h"
+
+1561576619 source:c:\users\t13774\desktop\facultad\parcial-master\libros.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
 	"autores.h"
 	"libros.h"
 
-1557243129 c:\users\t13774\desktop\facultad\parcial-master\libros.h
+1561576620 c:\users\t13774\desktop\facultad\parcial-master\libros.h
 
-1557254763 source:c:\users\t13774\desktop\facultad\parcial-master\prestamos.c
+1561576620 source:c:\users\t13774\desktop\facultad\parcial-master\prestamos.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
-	<ctype.h>
-	"Funciones.h"
-	"autores.h"
-	"fecha.h"
-	"libros.h"
-	"socios.h"
-	"prestamos.h"
-
-1557237784 c:\users\t13774\desktop\facultad\parcial-master\socios.h
-
-1557247673 c:\users\t13774\desktop\facultad\parcial-master\prestamos.h
-
-1557253968 source:c:\users\t13774\desktop\facultad\parcial-master\socios.c
-	<stdio.h>
-	<stdlib.h>
-	<string.h>
-	<ctype.h>
-	"Funciones.h"
-	"fecha.h"
-	"libros.h"
-	"socios.h"
-
-1557250836 source:c:\users\t13774\desktop\facultad\parcial-master\main.c
-	<stdio.h>
-	<stdlib.h>
-	<string.h>
-	<ctype.h>
-	"Funciones.h"
+	"funciones.h"
 	"fecha.h"
 	"autores.h"
 	"libros.h"
 	"socios.h"
 	"prestamos.h"
+
+1561576620 c:\users\t13774\desktop\facultad\parcial-master\socios.h
+
+1561576620 c:\users\t13774\desktop\facultad\parcial-master\prestamos.h
+
+1561576620 source:c:\users\t13774\desktop\facultad\parcial-master\socios.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"fecha.h"
+	"funciones.h"
+	"socios.h"
+
+1561576621 source:c:\users\t13774\desktop\facultad\parcial-master\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"funciones.h"
+	"fecha.h"
+	"autores.h"
+	"libros.h"
+	"socios.h"
+	"prestamos.h"
+	"informes.h"
 
 1557274337 source:d:\zorzano_tomas_1f_p1\parcial-master\autores.c
 	<stdio.h>
@@ -230,4 +223,17 @@
 	"libros.h"
 	"socios.h"
 	"prestamos.h"
+
+1561576620 source:c:\users\t13774\desktop\facultad\parcial-master\informes.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"funciones.h"
+	"fecha.h"
+	"autores.h"
+	"libros.h"
+	"socios.h"
+	"prestamos.h"
+
+1561576619 c:\users\t13774\desktop\facultad\parcial-master\informes.h
 

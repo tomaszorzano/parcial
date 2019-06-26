@@ -1,70 +1,103 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <ctype.h>
 #include "autores.h"
-#include "Funciones.h"
 
-void harcodeoAutores(eAutores* list)
+
+void hardcodeoAutores(eAutores* list)
 {
-
-    eAutores x[]={
-    {001,"Maximiliano","Meza",0},
-    {002,"Nicolas","Figal",0},
-    {003,"Alan","Franco",0},
-    {004,"Martin","Benitez",0},
-    {005,"Martin","Campaña",0},
+    eAutores nuevosAutores[] =
+    {
+        {1,"Neruda  ","Pablo",0},
+        {2,"Ysy     ","Alejo",0},
+        {3,"Lombardo","Mauro",0},
+        {4,"Krupo   ","Matias",0},
+        {5,"Figo    ","Lorena",0},
     };
-    for(int i = 0; i< 5;i++)
+    for(int i = 0; i< 5; i++)
     {
-        list[i] = x[i];
+        list[i] = nuevosAutores[i];
     }
-};
+}
 
-void viewAutor(eAutores  aAutores)
+
+void showAutor(eAutores list)
 {
-    printf(" \nCodigo:%d- Nombre:%s- Apellido:%s\n ",aAutores.codigo,aAutores.nombre,aAutores.apellido);
-};
+    printf("\n%d   \t%s\t%s\n",list.codigoDeAutor,list.apellido,list.nombre);
 
-void viewAutores(eAutores list[], int len)
+}
+
+void showAutores(eAutores list[],int len)
 {
+    printf("\n\nCODIGO\tAPELLIDO        NOMBRE\n");
 
-    system("cls");
-
-    for(int i=0; i < len; i++)
+    for(int i=0; i<len; i++)
     {
-
-        if( list[i].isEmpty == 0)
+        if(list[i].isEmpty == 0)
         {
-            viewAutor(list[i]);
+            showAutor(list[i]);
         }
     }
 
-};
+}
 
-int funcion_opcionesAutores()
+int obtenerAutor(eAutores list[], int len, int idAutor, char apellido[],char nombre[])
 {
-    int opcionIngresada;
-    char auxOpcion[5];
 
+    int ret = 0;
 
-    system("cls");
-    printf("\n******* MENU DE OPCIONES AUTORES ******* \n\n");
-    printf(" 1- LISTAR AUTORES \n");
-    printf(" 2- SALIR \n");
-    while(!funcion_getStringNumeros("Ingrese una opcion del 1-2 : ",auxOpcion))
-    {
-        printf("ERROR- La opcion tiene que ser solo numeros del 1 al 2\n\n");
+    for(int i=0; i < len; i++)    {
 
-        system("pause");
+        if(idAutor == list[i].codigoDeAutor)
+        {
+
+            strcpy(apellido, list[i].apellido);
+            strcpy(nombre, list[i].nombre);
+            ret = 1;
+            break;
+        }
     }
 
-    opcionIngresada=atoi(auxOpcion);
+    return ret;
+}
 
 
-    return opcionIngresada;
-};
+int sortAutores(eAutores list[], int len)
+{
+    eAutores auxAutor;
+    int ret;
+
+    if(list != NULL && len > 0)
+    {
+        for(int i = 0; i < len -1; i++)
+        {
+            for(int j=i+1; j<len; j++)
+            {
+                if(strcmp(list[i].apellido,list[j].apellido) > 0 && list[i].isEmpty == 0 && list[j].isEmpty == 0)
+                {
+                    auxAutor = list[i];
+                    list[i] = list[j];
+                    list[j] = auxAutor ;
+                }
+                else if(strcmp(list[i].apellido,list[j].apellido) == 0 && strcmp(list[i].nombre,list[j].nombre)>0 && list[i].isEmpty == 0 && list[j].isEmpty == 0)
+                {
+                    auxAutor = list[i];
+                    list[i] = list[j];
+                    list[j] = auxAutor ;
+                }
+
+            }
+
+            ret = 1;
+
+        }
+    }
+    else
+    {
+        ret = -1;
+    }
 
 
+    return ret;
 
-
+}

@@ -2,74 +2,79 @@
 <CodeBlocks_layout_file>
 	<FileVersion major="1" minor="0" />
 	<ActiveTarget name="Debug" />
-	<File name="libros.h" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="106" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="main.c" open="1" top="1" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="9660" topLine="298" />
-		</Cursor>
-	</File>
-	<File name="libros.c" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="530" topLine="21" />
-		</Cursor>
-		<Folding>
-			<Collapse line="9" />
-			<Collapse line="26" />
-		</Folding>
-	</File>
-	<File name="socios.h" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="703" topLine="0" />
-		</Cursor>
-	</File>
 	<File name="autores.c" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="135" topLine="6" />
-		</Cursor>
-	</File>
-	<File name="prestamos.h" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="304" topLine="0" />
+			<Cursor1 position="2157" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="autores.h" open="1" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="115" topLine="0" />
+			<Cursor1 position="378" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="informes.h" open="1" top="0" tabpos="15" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="774" topLine="1" />
+		</Cursor>
+	</File>
+	<File name="fecha.h" open="1" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="365" topLine="9" />
+		</Cursor>
+	</File>
+	<File name="libros.c" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2178" topLine="84" />
+		</Cursor>
+	</File>
+	<File name="fecha.c" open="1" top="0" tabpos="11" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1419" topLine="40" />
+		</Cursor>
+	</File>
+	<File name="informes.c" open="1" top="0" tabpos="14" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="7880" topLine="236" />
+		</Cursor>
+	</File>
+	<File name="libros.h" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="406" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="Funciones.c" open="1" top="1" tabpos="12" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="80" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="socios.c" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="17532" topLine="37" />
+			<Cursor1 position="15885" topLine="546" />
 		</Cursor>
-		<Folding>
-			<Collapse line="18" />
-			<Collapse line="38" />
-			<Collapse line="51" />
-			<Collapse line="68" />
-			<Collapse line="74" />
-			<Collapse line="90" />
-			<Collapse line="290" />
-			<Collapse line="316" />
-			<Collapse line="343" />
-			<Collapse line="416" />
-			<Collapse line="575" />
-			<Collapse line="616" />
-		</Folding>
 	</File>
 	<File name="prestamos.c" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="8752" topLine="62" />
+			<Cursor1 position="7400" topLine="201" />
 		</Cursor>
-		<Folding>
-			<Collapse line="17" />
-			<Collapse line="38" />
-			<Collapse line="51" />
-			<Collapse line="324" />
-			<Collapse line="347" />
-		</Folding>
+	</File>
+	<File name="prestamos.h" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1827" topLine="47" />
+		</Cursor>
+	</File>
+	<File name="socios.h" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2780" topLine="103" />
+		</Cursor>
+	</File>
+	<File name="main.c" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="6581" topLine="171" />
+		</Cursor>
+	</File>
+	<File name="Funciones.h" open="1" top="0" tabpos="13" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="4972" topLine="158" />
+		</Cursor>
 	</File>
 </CodeBlocks_layout_file>
